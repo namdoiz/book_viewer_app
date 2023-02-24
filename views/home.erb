@@ -1,0 +1,13 @@
+<h2 class="content-subhead">Table of Contents</h2>
+
+<div class="pure-menu">
+  <ul class="pure-menu-list">
+    <% counter = 1 %>
+    <% @contents.each do |chapter| %>
+      <li class="pure-menu-item">
+        <a href="/chapters/<%= counter %>" class="pure-menu-link"><%= chapter %></a>
+        <% counter += 1 %>
+      </li>
+    <% end %>
+  </ul>
+</div>

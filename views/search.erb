@@ -1,0 +1,25 @@
+<h2 class="content-subhead">Search</h2>
+
+<form action="/search" method="get">
+  <input name="query" value="<%= params[:query] %>">
+  <button type="submit">Search</button>
+</form>
+
+<% if String === @matched_chapter_hash %>
+<p> Sorry, no matches were found. </p>
+<% else %>
+<ul>
+  <% @matched_chapter_hash.each do |chapter, chapter_num|%>
+    <li >
+      <a href= "/chapters/<%= @matched_chapter_hash[chapter]%>"> <%=chapter%> </a>
+    </li>
+    <ol>
+      <% @matched_chapter_paragraphs.select{ |paragraph, index| chapter_num == index}.keys.each do |para| %>
+        <li>
+        <%= in_strong(para) %>
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
+</ul>
+<%end%>
